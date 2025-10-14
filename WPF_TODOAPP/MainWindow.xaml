@@ -22,7 +22,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Přidat!" Click="Button_Click" HorizontalAlignment="Left" Margin="42,348,0,0" VerticalAlignment="Top" Height="28" Width="73" Background="DeepPink"/>
+        <Button Content="Přidat" Click="Pridat_nove_Todo" HorizontalAlignment="Left" Margin="25,348,0,0" VerticalAlignment="Top" Height="28" Width="73" Background="DeepPink"/>
+        <Button Content="Odebrat" Click="Odebrat_Todo" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Height="28" Width="72" Background="DeepPink"/>
+        <Button Content="Edit" Click="Edit_Todo" HorizontalAlignment="Left" Margin="202,348,0,0" VerticalAlignment="Top" Height="28" Width="72" Background="DeepPink"/>
 
     </Grid>
 </Window>

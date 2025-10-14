@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WPF_TODOAPP.Database;
 
 namespace WPF_TODOAPP.Models
 {
-    class ContextManager // Create Read Update Delete
+    public class ContextManager // Create Read Update Delete
     {
         private readonly ToDoContext _context;
 
@@ -22,7 +20,8 @@ namespace WPF_TODOAPP.Models
             _context.SaveChanges();
         }
 
-        public void Remove(ToDoEntity entity) { 
+        public void Remove(ToDoEntity entity)
+        {
             _context.Remove(entity);
             _context.SaveChanges();
         }
@@ -35,12 +34,11 @@ namespace WPF_TODOAPP.Models
 
         public ToDoEntity? GetById(int id)
         {
-            ToDoEntity? entity = _context.Find<ToDoEntity>(id);
-            if (entity == null) 
-                throw new Exception("Entity does not exists!!!");
+            var entity = _context.Find<ToDoEntity>(id);
+            if (entity == null)
+                throw new Exception("Entity does not exist!");
             return entity;
         }
-
 
         public List<ToDoEntity> GetAll() => _context.Set<ToDoEntity>().ToList();
     }
