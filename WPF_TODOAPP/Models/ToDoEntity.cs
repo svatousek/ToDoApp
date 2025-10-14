@@ -16,7 +16,7 @@ namespace WPF_TODOAPP.Models
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsDone)));
             }
         }
-        public string Title { get; private set; }
+        public string Title { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 

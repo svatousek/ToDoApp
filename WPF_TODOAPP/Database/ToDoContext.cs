@@ -17,5 +17,14 @@ namespace WPF_TODOAPP.Database
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlite("Data Source = ToDoAppDb.db");
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ToDoEntity>().HasData(
+                new ToDoEntity { Id = 1, IsDone = true, Title = "Vyluxovat" },
+                new ToDoEntity { Id = 2, IsDone = false, Title = "Nakopat"}
+                );
+        }
     }
 }
