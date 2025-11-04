@@ -16,6 +16,7 @@ namespace WPF_TODOAPP
         public ContextManager ContextManager { get; set; }
         public ObservableCollection<ToDoEntity> ToDoList { get; set; }
         NewFileWindow newTodoWindow;
+        EditWindow editTodoWindow;
         public MainWindow()
         {
             ToDoContext context = new();
@@ -45,10 +46,18 @@ namespace WPF_TODOAPP
                 ToDoList.Remove(Selected);
             }
         }
+        private void EditSelectedTodo(object sender, RoutedEventArgs e)
+        {
+            ToDoEntity? Selected = ToDoListBox.SelectedItem as ToDoEntity;
+            if (Selected != null)
+            {
+                 
+            }
+        }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-           if(sender is CheckBox cbox && cbox.DataContext is ToDoEntity todo)
+            if (sender is CheckBox cbox && cbox.DataContext is ToDoEntity todo)
             {
                 todo.IsDone = cbox.IsChecked == true;
                 ContextManager.Update(todo);

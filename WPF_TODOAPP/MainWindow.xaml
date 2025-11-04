@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_TODOAPP"
         mc:Ignorable="d"
-        Background="#6c2977"
-        Foreground="White"
+        Background="DeepPink"
+        Foreground="DeepPink"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Title="MainWindow" Height="450" Width="300">
@@ -14,11 +14,11 @@
 
 
     <Grid>
-        <ListBox x:Name="ToDoListBox" Width="250" Height="300" Background="#844A8A" Margin="25,21,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+        <ListBox x:Name="ToDoListBox" Width="250" Height="300" Background="WhiteSmoke" Margin="25,21,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Background="#9D008A">
-                        <TextBlock Text="{Binding Title}" Foreground="White" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Title}" Foreground="DeepPink" />
                         <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Unchecked="CheckBox_Checked" Checked="CheckBox_Checked"/>
                     </StackPanel>
                 </DataTemplate>
@@ -28,16 +28,23 @@
         <Button Content="Přidat"
                 Click="AddNewToDo"
                 HorizontalAlignment="Left" 
-                Margin="25,357,0,0"
+                Margin="25,352,0,0"
                 VerticalAlignment="Top"
-                Width="60"/>
-        
+                Width="75" Height="30"/>
+
         <Button Content="Odebrat" 
                 Click="RemoveSelectedTodo"
-                HorizontalAlignment="Left"
-                Margin="107,357,0,0"
+                HorizontalAlignment="Center"
+                Margin="0,352,0,0"
                 VerticalAlignment="Top"
-                Width="57"/>
+                Width="76" Height="30"/>
+
+        <Button Content="Edit" 
+        Click="EditSelectedTodo"
+        HorizontalAlignment="Left"
+        Margin="200,352,0,0"
+        VerticalAlignment="Top"
+        Width="75" Height="30"/>
 
     </Grid>
 </Window>

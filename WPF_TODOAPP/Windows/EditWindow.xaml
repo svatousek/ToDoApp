@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:WPF_TODOAPP.Windows"
         mc:Ignorable="d"
         Background="DeepPink"
-        Title="Create New ToDo" Height="200" Width="200">
+        Title="Edit ToDo" Height="200" Width="200">
     <Grid>
-        <Label Content="Title:" HorizontalAlignment="Left" Margin="10,25,0,0" Foreground="White" VerticalAlignment="Top"/>
-        <TextBox x:Name="TitleInput" HorizontalAlignment="Left" Margin="50,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <CheckBox Content="Done" x:Name="IsDoneInput" Foreground="White" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top"/>
+        <Label Content="Curent title:" x:Name="CurentTitle" HorizontalAlignment="Center" Margin="0,22,0,0" Foreground="White" VerticalAlignment="Top" RenderTransformOrigin="1.534,-0.759" Width="181"/>
+        <Label Content="New title:" HorizontalAlignment="Left" Margin="6,52,0,0" Foreground="White" VerticalAlignment="Top" RenderTransformOrigin="0.437,1.648"/>
+        <TextBox x:Name="TitleInput" HorizontalAlignment="Left" Margin="70,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <CheckBox Content="Done" x:Name="IsDoneInput" Foreground="White" HorizontalAlignment="Center" Margin="0,92,0,0" VerticalAlignment="Top"/>
         <Button Content="Save" HorizontalAlignment="Left" Margin="28,132,0,0" VerticalAlignment="Top" Width="55" Click="SaveButton_Click" />
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="110,132,0,0" VerticalAlignment="Top" Width="55" Click="CancelButton_Click"/>
 

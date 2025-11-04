@@ -3,7 +3,7 @@ using WPF_TODOAPP.Database;
 
 namespace WPF_TODOAPP.Models
 {
-    public class ContextManager // Create Read Update Delete
+    public class ContextManager // Create Read Update Delete (CRUD)
     {
         private readonly ToDoContext _context;
 
