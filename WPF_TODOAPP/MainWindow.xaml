@@ -11,20 +11,33 @@
         WindowStartupLocation="CenterOwner"
         Title="MainWindow" Height="450" Width="300">
 
+
+
     <Grid>
-        <ListBox x:Name="ToDoListBox" Width="250" Height="300" Background="#844A8A" Margin="25,20,25,114">
+        <ListBox x:Name="ToDoListBox" Width="250" Height="300" Background="#844A8A" Margin="25,21,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="#9D008A">
                         <TextBlock Text="{Binding Title}" Foreground="White" />
-                        <CheckBox IsChecked="{Binding IsDone}"/>
+                        <CheckBox IsChecked="{Binding IsDone, Mode=TwoWay}" Unchecked="CheckBox_Checked" Checked="CheckBox_Checked"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Přidat" Click="Pridat_nove_Todo" HorizontalAlignment="Left" Margin="25,348,0,0" VerticalAlignment="Top" Height="28" Width="73" Background="DeepPink"/>
-        <Button Content="Odebrat" Click="Odebrat_Todo" HorizontalAlignment="Center" Margin="0,348,0,0" VerticalAlignment="Top" Height="28" Width="72" Background="DeepPink"/>
-        <Button Content="Edit" Click="Edit_Todo" HorizontalAlignment="Left" Margin="202,348,0,0" VerticalAlignment="Top" Height="28" Width="72" Background="DeepPink"/>
+
+        <Button Content="Přidat"
+                Click="AddNewToDo"
+                HorizontalAlignment="Left" 
+                Margin="25,357,0,0"
+                VerticalAlignment="Top"
+                Width="60"/>
+        
+        <Button Content="Odebrat" 
+                Click="RemoveSelectedTodo"
+                HorizontalAlignment="Left"
+                Margin="107,357,0,0"
+                VerticalAlignment="Top"
+                Width="57"/>
 
     </Grid>
 </Window>

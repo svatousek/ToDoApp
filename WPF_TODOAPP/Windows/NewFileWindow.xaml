@@ -11,8 +11,8 @@
         <Label Content="Title:" HorizontalAlignment="Left" Margin="10,25,0,0" Foreground="White" VerticalAlignment="Top"/>
         <TextBox x:Name="TitleInput" HorizontalAlignment="Left" Margin="50,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <CheckBox Content="Done" x:Name="IsDoneInput" Foreground="White" HorizontalAlignment="Center" Margin="0,64,0,0" VerticalAlignment="Top"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="28,132,0,0" VerticalAlignment="Top" Width="55" />
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="110,132,0,0" VerticalAlignment="Top" Width="55"/>
+        <Button Content="Save" HorizontalAlignment="Left" Margin="28,132,0,0" VerticalAlignment="Top" Width="55" Click="SaveButton_Click" />
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="110,132,0,0" VerticalAlignment="Top" Width="55" Click="CancelButton_Click"/>
 
     </Grid>
 </Window>

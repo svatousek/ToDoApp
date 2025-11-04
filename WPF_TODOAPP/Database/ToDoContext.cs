@@ -23,7 +23,7 @@ namespace WPF_TODOAPP.Database
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<ToDoEntity>().HasData(
                 new ToDoEntity { Id = 1, IsDone = true, Title = "Vyluxovat" },
-                new ToDoEntity { Id = 2, IsDone = false, Title = "Nakopat"}
+                new ToDoEntity { Id = 2, IsDone = false, Title = "Nakoupit" }
                 );
         }
     }

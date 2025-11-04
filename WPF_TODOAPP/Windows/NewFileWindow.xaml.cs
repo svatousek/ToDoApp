@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using WPF_TODOAPP.Models;
 
 namespace WPF_TODOAPP.Windows
 {
@@ -19,8 +8,10 @@ namespace WPF_TODOAPP.Windows
     /// </summary>
     public partial class NewFileWindow : Window
     {
-        public NewFileWindow()
+        private readonly ContextManager _contextManager;
+        public NewFileWindow(ContextManager manager)
         {
+            _contextManager = manager;
             InitializeComponent();
         }
 
@@ -31,6 +22,13 @@ namespace WPF_TODOAPP.Windows
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            string title = TitleInput.Text;
+            bool isDone = IsDoneInput.IsChecked.Value;
+
+            ToDoEntity todo = new ToDoEntity { IsDone = isDone, Title=title };
+            _contextManager.Add(todo);
+
+            this.Close();
 
         }
     }

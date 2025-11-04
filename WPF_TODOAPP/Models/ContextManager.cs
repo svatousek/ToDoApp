@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
 using WPF_TODOAPP.Database;
 
 namespace WPF_TODOAPP.Models
@@ -20,8 +18,7 @@ namespace WPF_TODOAPP.Models
             _context.SaveChanges();
         }
 
-        public void Remove(ToDoEntity entity)
-        {
+        public void Remove(ToDoEntity entity) { 
             _context.Remove(entity);
             _context.SaveChanges();
         }
@@ -34,11 +31,12 @@ namespace WPF_TODOAPP.Models
 
         public ToDoEntity? GetById(int id)
         {
-            var entity = _context.Find<ToDoEntity>(id);
-            if (entity == null)
-                throw new Exception("Entity does not exist!");
+            ToDoEntity? entity = _context.Find<ToDoEntity>(id);
+            if (entity == null) 
+                throw new Exception("Entity does not exists!!!");
             return entity;
         }
+
 
         public List<ToDoEntity> GetAll() => _context.Set<ToDoEntity>().ToList();
     }

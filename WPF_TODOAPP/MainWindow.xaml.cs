@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using WPF_TODOAPP.Database;
 using WPF_TODOAPP.Models;
 using WPF_TODOAPP.Windows;
@@ -11,51 +14,44 @@ namespace WPF_TODOAPP
     public partial class MainWindow : Window
     {
         public ContextManager ContextManager { get; set; }
-        private NewFileWindow newToDoWindow;
-
+        public ObservableCollection<ToDoEntity> ToDoList { get; set; }
+        NewFileWindow newTodoWindow;
         public MainWindow()
         {
-            InitializeComponent();
-
             ToDoContext context = new();
             ContextManager = new ContextManager(context);
-
-            RefreshToDoList();
+            ToDoList = new ObservableCollection<ToDoEntity>(ContextManager.GetAll());
+            InitializeComponent();
+            ToDoListBox.ItemsSource = ToDoList;
         }
 
-        private void RefreshToDoList()
+        private void AddNewToDo(object sender, RoutedEventArgs e)
         {
-            ToDoListBox.ItemsSource = null;
-            ToDoListBox.ItemsSource = ContextManager.GetAll();
-        }
-
-        private void Pridat_nove_Todo(object sender, RoutedEventArgs e)
-        {
-            //chybí kod
-        }
-
-        private void Odebrat_Todo(object sender, RoutedEventArgs e)
-        {
-            if (ToDoListBox.SelectedItem is ToDoEntity selected)
+            newTodoWindow = new(ContextManager);
+            newTodoWindow.Closed += (s, e) =>
             {
-                ContextManager.Remove(selected);
-                RefreshToDoList();
-            }
-            else
+                ToDoList.Clear();
+                ContextManager.GetAll().ForEach(x => ToDoList.Add(x));
+            };
+            newTodoWindow.ShowDialog();
+        }
+
+        private void RemoveSelectedTodo(object sender, RoutedEventArgs e)
+        {
+            ToDoEntity? Selected = ToDoListBox.SelectedItem as ToDoEntity;
+            if (Selected != null)
             {
-                MessageBox.Show("Co chces odstranit ty pico co??", "Chyba tveho mozkového výplodu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                ContextManager.Remove(Selected);
+                ToDoList.Remove(Selected);
             }
         }
 
-        private void Edit_Todo(object sender, RoutedEventArgs e)
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            if (ToDoListBox.SelectedItem is ToDoEntity selected)
+           if(sender is CheckBox cbox && cbox.DataContext is ToDoEntity todo)
             {
-                //chybí kod
-            }
-            else
-            {
-                MessageBox.Show("Co chces menit ty pico co??", "Chyba tveho mozkového výplodu", MessageBoxButton.OK, MessageBoxImage.Warning);
+                todo.IsDone = cbox.IsChecked == true;
+                ContextManager.Update(todo);
             }
         }
     }
